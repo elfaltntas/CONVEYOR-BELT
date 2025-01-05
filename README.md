@@ -1,73 +1,73 @@
-# 🚀 Conveyor Control System Project
+# 🚀 Konveyör Kontrol Sistemi Projesi
 
-Welcome to the *Conveyor Control System* repository! This project demonstrates a conveyor belt system that incorporates advanced safety, control, and monitoring features using PLC and HMI technologies.
-
----
-
-## 📜 Project Overview
-
-This project includes:
-
-1. *Safety Mechanisms*:
-   - The motor stops when the thermal relay trips, the stop button is pressed, or if wiring/contact issues occur.
-   - Fault signaling via a red lamp blinking at 1 Hz and a horn sounding, which can be silenced separately.
-
-2. *Directional Control*:
-   - Forward operation: Activated via the forward button and indicated by a green light.
-   - Reverse operation: Activated via the reverse button and indicated by a yellow light.
-   - Direction changes require the system to stop first.
-
-3. *HMI Integration*:
-   - Dynamic fault and status displays with a 100ms acquisition cycle for accurate visual feedback.
-   - Real-time object tracking on the conveyor based on data block values (0-100).
-
-4. *Data-Driven Animation*:
-   - Integer-based data block for conveyor position control.
-   - Custom algorithm for value adjustments and resetting.
+*Konveyör Kontrol Sistemi* deposuna hoş geldiniz! Bu proje, PLC ve HMI teknolojileri kullanılarak güvenlik, kontrol ve izleme özelliklerini içeren bir konveyör bant sistemini göstermektedir.
 
 ---
 
-## 🛠 System Details
+## 📜 Proje Özeti
 
-### Control Features
-- *Start/Stop Logic*: Ensures forward/reverse buttons function only after ON/OFF activation.
-- *Reset Functionality*: Stops the horn while maintaining fault indicators until the thermal relay is reset.
-- *Smooth Operations*: Conveyor objects move seamlessly based on motor activation.
+Bu proje şunları içermektedir:
 
-### HMI Configuration
-- *Buttons*: Configured to toggle true/false states using press/release actions.
-- *Tags*: All objects and indicators are tag-linked for real-time interaction.
-- *Cycle Optimization*: Tags utilize memory addresses like M20.0 for efficient performance.
+1. *Güvenlik Mekanizmaları*:
+   - Termik röle açıldığında, stop butonuna basıldığında veya kablolama/kontak sorunları olduğunda motor durur.
+   - Arıza, 1 Hz frekansla yanıp sönen kırmızı bir lamba ve bir korna ile sinyallenir. Korna ayrı olarak susturulabilir.
+
+2. *Yön Kontrolü*:
+   - İleri Çalışma: İleri butonu ile aktif hale gelir ve yeşil bir ışıkla gösterilir.
+   - Geri Çalışma: Geri butonu ile aktif hale gelir ve sarı bir ışıkla gösterilir.
+   - Yön değişiklikleri, sistemin önce durdurulmasını gerektirir.
+
+3. *HMI Entegrasyonu*:
+   - Dinamik arıza ve durum göstergeleri için 100ms veri toplama döngüsü.
+   - Veri bloklarına dayalı gerçek zamanlı nesne takibi.
+
+4. *Veri Tabanlı Animasyon*:
+   - Konveyör pozisyon kontrolü için tamsayı bazlı veri bloğu.
+   - Değer ayarlamaları ve sıfırlama için özel algoritma.
 
 ---
 
-## 💡 Key Features
+## 🛠 Sistem Detayları
 
-- Fault detection with precise visual and auditory alerts.
-- Directional control with interlocking safety logic.
-- Animated conveyor object tracking.
-- HMI-driven monitoring and control for a user-friendly experience.
+### Kontrol Özellikleri
+- *Başlat/Durdur Mantığı*: İleri/Geri butonları yalnızca ON/OFF aktivasyonundan sonra çalışır.
+- *Reset Fonksiyonu*: Korna durdurulabilir, ancak arıza göstergeleri termik röle sıfırlanana kadar devam eder.
+- *Sorunsuz Operasyon*: Motor aktivasyonuna dayalı olarak konveyör nesneleri sorunsuz hareket eder.
+
+### HMI Yapılandırması
+- *Butonlar*: Basma/Bırakma eylemleri ile doğru/yanlış durumlarını değiştirir.
+- *Taglar*: Tüm nesneler ve göstergeler, gerçek zamanlı etkileşim için tag bağlantılıdır.
+- *Döngü Optimizasyonu*: Hafıza adresleri (M20.0 gibi) kullanılarak verimli performans sağlanır.
 
 ---
 
-## 📂 File Structure
+## 💡 Öne Çıkan Özellikler
+
+- Hatasız görsel ve işitsel uyarılar ile hata tespiti.
+- Güvenlik mantığı ile yön kontrolü.
+- Animasyonlu konveyör nesne takibi.
+- Kullanıcı dostu bir deneyim için HMI tabanlı izleme ve kontrol.
+
+---
+
+## 📂 Dosya Yapısı
 
 
 /conveyor_project
-├── PLC_Code
-├── HMI_Configurations
-├── Documentation
+├── PLC_Kodları
+├── HMI_Konfigürasyonları
+├── Dokümantasyon
 └── README.md
 
 
 ---
 
-## 📞 Contact
+## 📞 İletişim
 
-For any inquiries or collaboration:
+Herhangi bir soru veya iş birliği için:
 
-- 📧 *Email*: burhanustubi@example.com
-- 🐙 *GitHub*: [Your GitHub Profile](https://github.com)
+- 📧 *E-posta*: burhanustubi@example.com
+- 🐙 *GitHub*: [GitHub Profiliniz](https://github.com)
 
-> *"Efficiency and safety are the keys to automation success."*
+> *"Verimlilik ve güvenlik, otomasyon başarısının anahtarıdır."*
 ![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130516.png)
