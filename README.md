@@ -71,18 +71,3 @@ For any inquiries or collaboration:
 
 > *"Efficiency and safety are the keys to automation success."*
 ![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130516.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130539.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130555.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130607.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130634.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130639.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130659.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130206.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130715.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130820.png)
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20140921.png)
-Start-stop düğmesine basmadan ileri veya geri butonları çalışmayacaktır. İlk önce ON/OFF düğmesine basılıp daha sonra ileri düğmesine basıldığında ürün konveyör bantta ileri doğru gitmeye başlayacaktır.<br/>
-ON/OFF düğmesine bastıktan sonra geri düğmesine bastığımızda ürün kaldığı yerden geriye doğru gitmeye başlayacaktır.<br/>
-Termik bozulduğunda ise arıza lambası ve korna çalmaya başlayacaktır. <br/>
-Reset düğmesine bastığımızda ise korna susacak ve arıza lambası yanıp sönmeye devam edecektir. <br/>
-Termik düzeldiğinde hem korna hem arıza lambası duracaktır ve sistemi tekrardan çalıştırabileceğiz.
