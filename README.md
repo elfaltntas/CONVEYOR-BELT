@@ -5,7 +5,7 @@
 ---
 
 ## 📜 Proje Özeti
-
+![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130516.png)
 Bu proje şunları içermektedir:
 
 1. *Güvenlik Mekanizmaları*:
@@ -66,8 +66,8 @@ Bu proje şunları içermektedir:
 
 Herhangi bir soru veya iş birliği için:
 
-- 📧 *E-posta*: burhanustubi@example.com
-- 🐙 *GitHub*: [GitHub Profiliniz](https://github.com)
+- 📧 elfaltntas123@gmail.com
 
-> *"Verimlilik ve güvenlik, otomasyon başarısının anahtarıdır."*
-![konveyor](https://github.com/elfaltntas/CONVEYOR-BELT/blob/main/images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202024-12-22%20130516.png)
+
+
+
