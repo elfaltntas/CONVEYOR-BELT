@@ -1,110 +1,87 @@
-Genel Bakış
+# Konveyör Sistemi
 
-Bu belge, bir konveyör sisteminin çalışma prensiplerini ve kurulum gereksinimlerini açıklamaktadır. Sistem, arıza durumlarında net görsel ve işitsel geri bildirimlerle güvenli ve verimli bir çalışma sağlar.
+Bu proje, bir konveyör sisteminin çalışmasını simüle eden ve kontrol eden bir PLC (Programlanabilir Logic Controller) tabanlı sistemin yazılımını içerir. Sistem, motorun çalışmasını ve durmasını, yönünü ve hata durumlarını yönetir. HMI (Human-Machine Interface) kullanılarak görsel geri bildirim sağlanır ve kullanıcı etkileşimi gerçekleştirilir.
 
-Çalışma Prensipleri
+## Çalışma Prensibi
 
-1. Motor Çalışması ve Güvenlik
+1. **Motor Durumu**: 
+    - Termik röle açıldığında veya Stop butonuna basıldığında motor durur.
+    - Kablo kırıkları veya termik röle kontaklarının bozulması durumunda da motor durur.
 
-Durdurma Koşulları: Motor aşağıdaki durumlarda durur:
+2. **İleri ve Geri Yön**:
+    - İleri yön butonuna basıldığında motor ileri yönde çalışır.
+    - Geri yön butonuna basıldığında motor geri yönde çalışır.
+    - İleri yönde çalışırken geri, geri yönde çalışırken ileri yön çalışmaz.
+    - Bant önce STOP ettirilip sonra istenen yöne çalıştırılacaktır.
 
-Termik röle tetiklendiğinde.
+3. **Işıklandırma**:
+    - İleri yönde motor çalışırken yeşil, geri yönde çalışırken sarı lambalar yanar.
 
-Stop butonuna basıldığında.
+4. **Hata Durumu**:
+    - Termik açtığında kırmızı bir sinyal lambası 1 Hz frekansla yanıp söner.
+    - Korna da aynı frekansta çalar.
+    - Korna, RESET butonuna basıldığında durur, arıza lambası ise ancak termik kurulduktan sonra resetlenebilir.
 
-Kablo kopmaları ya da stop butonu veya termik röle kontaklarında arıza meydana geldiğinde.
+5. **Konveyör Animasyonları ve Veri Blokları**:
+    - Konveyör üzerindeki kutular, integer veri türüyle saklanan bir data bloğuna bağlı olarak hareket eder.
+    - Bu veri, konveyör animasyonlarını ve kutuların konumlarını belirler.
+    - Verinin artma ve sıfırlanma algoritması, PLC'nin main blok kısmında tanımlıdır.
 
-2. Yön Kontrolü
+## HMI Detayları
 
-İleri Yön: İleri butonuna basıldığında motor ileri yönde çalışır.
+- **Taglar ve Kontrol Süresi**:
+    - Arıza ışıkları için ışıkların doğru gösterimi sağlanabilmesi amacıyla HMI taglarının kontrol süresi (Acquisition Cycle) 100ms olarak değiştirilmelidir. Bu ayar sayesinde ışıklar yanıp sönecektir.
 
-Geri Yön: Geri butonuna basıldığında motor geri yönde çalışır.
+- **Butonlar**:
+    - Butonların `Press` (Basıldığında) tagı ve `Release` (Bırakıldığında) tagı düzgün şekilde ayarlanmalıdır.
+    - Butonlar verimli çalışabilmesi için, M20.0 gibi hafıza tagları kullanılmalıdır. Dış kontaklar (örneğin, I0.1) ile verimli çalışma sağlanamaz.
 
-Yön Kilidi: Yön değişikliği yapmadan önce sistem durdurulmalıdır. Konveyör durdurulmadan yön değişikliği yapılamaz.
+- **Motor Çalışma Kontağı**:
+    - Konveyörün doğru çalışması için, konveyör veri bloğunun önünde motor çalışma açık kontağı yer alır. Bu sayede motor çalışmadığı sürece konveyörde herhangi bir işlem yapılmaz.
 
-3. Görsel Göstergeler
+## İşleyiş
 
-Yeşil lamba: Motorun ileri yönde çalıştığını gösterir.
+- **Başlangıç ve Yön Seçimi**:
+    - Start/Stop düğmesine basmadan önce, ileri veya geri butonları çalışmaz.
+    - İlk olarak ON/OFF düğmesine basıldıktan sonra, ileri butonuna basıldığında konveyör ileri yönde hareket etmeye başlar.
+    - ON/OFF düğmesine basıldıktan sonra geri butonuna basıldığında ürün, kaldığı yerden geri yönde hareket eder.
 
-Sarı lamba: Motorun geri yönde çalıştığını gösterir.
+- **Hata Durumu ve Reset**:
+    - Termik bozulduğunda, arıza lambası yanar ve korna çalmaya başlar.
+    - RESET butonuna basıldığında, korna susar ancak arıza lambası yanıp sönmeye devam eder.
+    - Termik kurulduğunda hem korna hem de arıza lambası durur, sistem tekrar çalıştırılabilir.
 
-Kırmızı yanıp sönen lamba (1 Hz): Termik röle arızasını gösterir.
+## Yapı
 
-4. Sesli Uyarılar
+- **PLC Data Blokları**:
+    - Konveyör animasyonları için kullanılan veri bloğunun veri türü `integer` olarak ayarlanmıştır. Bu veri 0 ile 100 arasında değerler tutar.
+    - Verinin hangi değerlerde artacağı ve hangi değerlere ulaştığında sıfırlanacağı algoritmalarla belirlenmiştir.
 
-Termik röle arızası durumunda bir korna 1 Hz frekansla öter.
+- **HMI Objeleri**:
+    - Konveyör üzerindeki kutular basit objelerle oluşturulmuştur.
+    - HMI ekranında, birçok obje PLC’nin default taglarıyla bağlanır.
+    - Butonlar için `Press` ve `Release` tagları uygun şekilde ayarlanmalıdır.
 
-Reset butonu kullanılarak korna susturulabilir, ancak kırmızı lamba termik röle resetlenene kadar yanıp sönümeye devam eder.
+## Kurulum ve Kullanım
 
-5. Konveyör Pozisyon Verisi
+1. **PLC Programı**:
+    - PLC'ye programı yükleyin ve bağlantıları doğru şekilde kurun.
+  
+2. **HMI Yapılandırması**:
+    - HMI taglarını PLC'nin default tag kısmından ekleyin ve objeleri uygun şekilde konfigüre edin.
 
-Konveyör pozisyonu bir veri bloğu ile yönetilir.
+3. **Sistemi Çalıştırma**:
+    - ON/OFF düğmesine basarak sistemi başlatın.
+    - Yön butonlarıyla motorun ileri ya da geri yönde çalışmasını sağlayın.
+    - Arıza durumlarında RESET butonuna basarak korna ve arıza lambasını durdurun.
 
-Veri bloğu türü integer olup 0 ile 100 arasında değer tutar.
+## Lisans
 
-Bu değerler, kutunun konveyör üzerindeki pozisyonunu belirler.
+Bu yazılım, [Lisans Adı] altında lisanslanmıştır. Kullanım koşulları için lütfen [lisans linki]yi inceleyin.
 
-Uygulama Detayları
+---
 
-Pozisyon Verisi İçin Algoritma
-
-Ana blokta pozisyon verisini kontrol eden algoritma bulunur.
-
-Bu algoritma, verinin ne zaman artacağı ve ne zaman sıfırlanacağını belirler.
-
-HMI Yapılandırması
-
-Edinim Döngüsü: Arıza lambalarının doğru çalışması için 100ms olarak ayarlanır.
-
-Taglar: HMI ekranındaki objeler PLC'nin varsayılan taglarına bağlıdır.
-
-Buton Fonksiyonları:
-
-Basıldığında: Tag True yapılır.
-
-Bırakıldığında: Tag False yapılır.
-
-Giriş ve Hafıza İşleyişi
-
-Buton işlemleri için dış kontaklar (I0.1 gibi) yerine iç hafıza tagları (M20.0 gibi) kullanın.
-
-Bu, sistemin daha verimli ve güvenilir çalışmasını sağlar.
-
-Çalışma Akışı
-
-Başlatma:
-
-ON/OFF butonuna basarak sistemi aktif hale getirin.
-
-İleri butonuna basarak kutuyu konveyör üzerinde ileri doğru hareket ettirin.
-
-Alternatif olarak, Geri butonuna basarak kutuyu geri doğru hareket ettirin.
-
-Arıza Durumları:
-
-Termik röle tetiklendiğinde:
-
-Kırmızı lamba yanıp söner ve korna öter.
-
-Reset butonuna basarak korna susturulur.
-
-Kırmızı lamba, termik röle resetlenene kadar yanmaya devam eder.
-
-Arıza giderildikten sonra sistemi yeniden başlatın.
-
-Sistemi Kapatma:
-
-Stop butonuna basarak tüm işlemleri durdurun.
-
-Notlar
-
-Konveyör veri bloğu ile işlem yapmadan önce motorun çalışır durumda olduğundan emin olun.
-
-Sistem güvenliğini ve verimliliğini sağlamak için iç hafıza kontakları kullanın.
-
-Tüm arıza göstergelerinin ve alarmların doğru çalıştığından emin olmak için sistemi periyodik olarak test edin.
-
-Bu prensiplere uyulduğunda, konveyör sistemi her şartta güvenli, verimli ve sorunsuz bir şekilde çalışacaktır.
+*Bu doküman, sistemin çalışma prensiplerini ve yazılımın doğru şekilde yapılandırılmasını amaçlamaktadır. Detaylı teknik bilgiler ve talimatlar için ilgili teknik dökümantasyona başvurabilirsiniz.*
 
 
 
